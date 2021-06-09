@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="#" >직원정보 등록</a>
+<a href="emp/empList" >직원정보 리스트</a>
 </body>
 </html>
