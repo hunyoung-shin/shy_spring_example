@@ -8,6 +8,6 @@
 </head>
 <body>
 직원리스트 페이지입니다.<br />
-<a href="empReget"></a>직원등록</a>
+<a href="empReget">직원등록</a>
 </body>
 </html>
