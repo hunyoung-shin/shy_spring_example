@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +11,7 @@
 <table border="1" width="500" align="center">
 	<tr><td width="130">직원번호</td>
 		<td width="370">
-			<input type="text" name="empNo">
+			<input type="text" name="empNo" value="${empNo1 }">
 		</td></tr>
 	<tr><td>아이디</td>
 		<td>
