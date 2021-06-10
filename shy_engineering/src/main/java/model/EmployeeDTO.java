@@ -1,21 +1,18 @@
-package command;
+package model;
 
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
-public class EmployeeCommand {	// jsp파일의 input type의 이름과 같아야
+public class EmployeeDTO {
 	Long empNo;
 	String empId;
 	String empPw;
-	String empPwCon;
 	String empName;
 	String empDeptNumber;
 	String empEmail;
 	String empPhoneNumber;
-	@DateTimeFormat(pattern="yyyy-MM-dd")
-	Date hireDate;
+	Date hire_date;
 	Long salary;
+	
 	public Long getEmpNo() {
 		return empNo;
 	}
@@ -33,12 +30,6 @@ public class EmployeeCommand {	// jsp파일의 input type의 이름과 같아야
 	}
 	public void setEmpPw(String empPw) {
 		this.empPw = empPw;
-	}
-	public String getEmpPwCon() {
-		return empPwCon;
-	}
-	public void setEmpPwCon(String empPwCon) {
-		this.empPwCon = empPwCon;
 	}
 	public String getEmpName() {
 		return empName;
@@ -61,14 +52,14 @@ public class EmployeeCommand {	// jsp파일의 input type의 이름과 같아야
 	public String getEmpPhoneNumber() {
 		return empPhoneNumber;
 	}
-	public void setEmpPhone(String empPhoneNumber) {
+	public void setEmpPhoneNumber(String empPhoneNumber) {
 		this.empPhoneNumber = empPhoneNumber;
 	}
-	public Date getHireDate() {
-		return hireDate;
+	public Date getHire_date() {
+		return hire_date;
 	}
-	public void setHireDate(Date hireDate) {
-		this.hireDate = hireDate;
+	public void setHire_date(Date hire_date) {
+		this.hire_date = hire_date;
 	}
 	public Long getSalary() {
 		return salary;
@@ -76,7 +67,5 @@ public class EmployeeCommand {	// jsp파일의 input type의 이름과 같아야
 	public void setSalary(Long salary) {
 		this.salary = salary;
 	}
-	
-	// Alt + Shift + s -> r : getter/setter 자동완성
 	
 }
