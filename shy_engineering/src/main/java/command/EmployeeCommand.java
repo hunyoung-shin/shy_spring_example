@@ -17,6 +17,7 @@ public class EmployeeCommand {	// jsp파일의 input type의 이름과 같아야
 	Date hireDate;
 	Long salary;
 	
+	
 	// Alt + Shift + s -> r : getter/setter 자동완성
 	public Long getEmpNo() {
 		return empNo;
@@ -78,6 +79,11 @@ public class EmployeeCommand {	// jsp파일의 input type의 이름과 같아야
 	public void setSalary(Long salary) {
 		this.salary = salary;
 	}
-	
-	
+	public boolean isEmpPwEqualsEmpPwCon() {
+		if(empPw.equals(empPwCon)) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 }

@@ -13,13 +13,14 @@ public class EmployeeService {
 	EmployeeRepository employeeRepository;
 	public void insertEmp(EmployeeCommand employeeCommand) {
 		EmployeeDTO dto = new EmployeeDTO();
-		dto.setEmpDeptNumber(employeeCommand.getEmpDeptNumber());
+		dto.setEmpDeptNumber(employeeCommand.getEmpDeptNumber());;
 		dto.setEmpEmail(employeeCommand.getEmpEmail());
 		dto.setEmpId(employeeCommand.getEmpId());
 		dto.setEmpName(employeeCommand.getEmpName());
 		dto.setEmpNo(employeeCommand.getEmpNo());
 		dto.setEmpPhoneNumber(employeeCommand.getEmpPhoneNumber());
-		dto.setEmpPw(bcryptPasswordEncoder.encode(employeeCommand.getEmpPw()));	// spring-context.xml
+		dto.setEmpPw(bcryptPasswordEncoder.encode(
+				employeeCommand.getEmpPw()));
 		dto.setHireDate(employeeCommand.getHireDate());
 		dto.setSalary(employeeCommand.getSalary());
 		employeeRepository.insertEmployee(dto);
