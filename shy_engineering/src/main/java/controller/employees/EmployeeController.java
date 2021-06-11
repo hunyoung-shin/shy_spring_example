@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import command.EmployeeCommand;
+import service.employees.EmployeeDeleteService;
 import service.employees.EmployeeInfoService;
 import service.employees.EmployeeListService;
 import service.employees.EmployeeModifyService;
@@ -27,6 +28,8 @@ public class EmployeeController {
 	EmployeeInfoService employeeInfoService;
 	@Autowired
 	EmployeeModifyService employeeModifyService;
+	@Autowired
+	EmployeeDeleteService employeeDeleteService;
 	
 	@RequestMapping("empList")	// empList 따로받
 	public String empList(Model model) {	// Model : db로부터 받아와서 서비스로 보내는 역할
@@ -57,5 +60,10 @@ public class EmployeeController {
 	public String empModifyOk(EmployeeCommand employeeCommand) {
 		employeeModifyService.empModify(employeeCommand);
 		return "redirect:empInfo?empNo=" + employeeCommand.getEmpNo();
+	}
+	@RequestMapping("empDelete")
+	public String empDelete(@RequestParam(value="empNo") String empNo) {
+		employeeDeleteService.empDelete(empNo);
+		return "redirect:empList";
 	}
 }

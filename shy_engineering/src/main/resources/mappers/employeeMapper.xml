@@ -40,4 +40,10 @@ HIRE_DATE hireDate, SALARY
 	where emp_no = #{empNo}
 </update>
 
+<delete id="employeeDelete" parameterType="string">
+	delete from employees
+	where emp_no = #{empNo}
+</delete>
+
+
 </mapper>
