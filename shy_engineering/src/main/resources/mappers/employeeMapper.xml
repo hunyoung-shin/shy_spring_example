@@ -26,6 +26,7 @@ HIRE_DATE hireDate, SALARY
 <select id="empAllList" resultType="emp">
 	select <include refid="selectColumn"/>
 	from employees
+	order by emp_no
 </select>
 <select id="empInfo" parameterType="string" resultType="emp">
 	select <include refid="selectColumn"/>
