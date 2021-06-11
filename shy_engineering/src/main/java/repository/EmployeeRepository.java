@@ -24,4 +24,8 @@ public class EmployeeRepository {
 		statement = namespace + ".empAllList";
 		return sqlSession.selectList(statement);
 	}
+	public EmployeeDTO empInfo(String empNo) {
+		statement = namespace + ".empInfo";
+		return sqlSession.selectOne(statement, empNo);	// 해당 statement와 일치한는 empNo를 가지는 dto의 줄 반환
+	}
 }

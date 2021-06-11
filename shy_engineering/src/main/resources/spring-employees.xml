@@ -9,4 +9,5 @@
 	<bean id="employeeRepository" class="repository.EmployeeRepository" />
 	<bean id="employeeNoService" class="service.employees.EmployeeNoService" />
 	<bean id="employeeListService" class="service.employees.EmployeeListService" />
+	<bean id="employeeInfoService" class="service.employees.EmployeeInfoService" />
 </beans>

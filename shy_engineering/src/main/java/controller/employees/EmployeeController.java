@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import command.EmployeeCommand;
+import service.employees.EmployeeInfoService;
 import service.employees.EmployeeListService;
 import service.employees.EmployeeNoService;
 import service.employees.EmployeeService;
@@ -20,8 +22,11 @@ public class EmployeeController {
 	EmployeeNoService employeeNoService;
 	@Autowired
 	EmployeeListService employeeListService;
+	@Autowired
+	EmployeeInfoService employeeInfoService;
+	
 	@RequestMapping("empList")	// empList 따로받
-	public String empList(Model model) {
+	public String empList(Model model) {	// Model : db로부터 받아와서 서비스로 보내는 역할
 		employeeListService.empList(model);
 		return "employee/empList";
 	}
@@ -34,6 +39,12 @@ public class EmployeeController {
 	public String empJoin(EmployeeCommand employeeCommand) {
 		employeeService.insertEmp(employeeCommand);
 		return "redirect:empList";
+	}
+	@RequestMapping("/empInfo")
+	public String empInfo(@RequestParam(value="empNo") String empNo, Model model) {	//empNo를 요청해서 String empNo에 저장 + Model 이용
+		employeeInfoService.empInfo(empNo, model);
+		System.out.println(empNo);
+		return "employee/employeeInfo";	// /empInfo를 통해 요청받은 자료를 여기페이지에 적용
 	}
 	
 }

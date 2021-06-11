@@ -7,6 +7,12 @@
 EMP_NO, EMP_ID, EMP_PW, EMP_NAME, EMP_DEPT_NUM,
 EMP_EMAIL, EMP_PHONE, HIRE_DATE, SALARY
 </sql>
+<sql id="selectColumn">
+EMP_NO empNO, EMP_ID empId, EMP_PW empPw,
+EMP_NAME empName, EMP_DEPT_NUM empDeptNumber,
+EMP_EMAIL empEmail, EMP_PHONE empPhoneNumber,
+HIRE_DATE hireDate, SALARY
+</sql>
 
 <insert id="employeeInsert" parameterType="emp">
 	insert into employees(<include refid="baseColumn"/>)
@@ -18,10 +24,13 @@ EMP_EMAIL, EMP_PHONE, HIRE_DATE, SALARY
 	select nvl(max(emp_no), 10000)+1 from employees
 </select>
 <select id="empAllList" resultType="emp">
-	select EMP_NO empNO, EMP_ID empId, EMP_PW empPw,
-			EMP_NAME empName, EMP_DEPT_NUM empDeptNumber,
-			EMP_EMAIL empEmail, EMP_PHONE empPhoneNumber,
-			HIRE_DATE hireDate, SALARY
+	select <include refid="selectColumn"/>
 	from employees
 </select>
+<select id="empInfo" parameterType="string" resultType="emp">
+	select <include refid="selectColumn"/>
+	from employees
+	where emp_no = #{empNo} 
+</select>
+
 </mapper>
