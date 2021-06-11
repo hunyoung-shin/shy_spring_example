@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import command.EmployeeCommand;
 import service.employees.EmployeeInfoService;
 import service.employees.EmployeeListService;
+import service.employees.EmployeeModifyService;
 import service.employees.EmployeeNoService;
 import service.employees.EmployeeService;
 
@@ -24,6 +25,8 @@ public class EmployeeController {
 	EmployeeListService employeeListService;
 	@Autowired
 	EmployeeInfoService employeeInfoService;
+	@Autowired
+	EmployeeModifyService employeeModifyService;
 	
 	@RequestMapping("empList")	// empList 따로받
 	public String empList(Model model) {	// Model : db로부터 받아와서 서비스로 보내는 역할
@@ -40,11 +43,19 @@ public class EmployeeController {
 		employeeService.insertEmp(employeeCommand);
 		return "redirect:empList";
 	}
-	@RequestMapping("/empInfo")
+	@RequestMapping("empInfo")
 	public String empInfo(@RequestParam(value="empNo") String empNo, Model model) {	//empNo를 요청해서 String empNo에 저장 + Model 이용
 		employeeInfoService.empInfo(empNo, model);
-		System.out.println(empNo);
 		return "employee/employeeInfo";	// /empInfo를 통해 요청받은 자료를 여기페이지에 적용
 	}
-	
+	@RequestMapping("empModify")
+	public String empModify(@RequestParam(value="empNo") String empNo, Model model) {
+		employeeInfoService.empInfo(empNo, model);
+		return "employee/employeeModify";
+	}
+	@RequestMapping("empModifyOk")
+	public String empModifyOk(EmployeeCommand employeeCommand) {
+		employeeModifyService.empModify(employeeCommand);
+		return "redirect:empInfo?empNo=" + employeeCommand.getEmpNo();
+	}
 }

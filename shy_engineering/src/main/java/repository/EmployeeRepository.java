@@ -28,4 +28,8 @@ public class EmployeeRepository {
 		statement = namespace + ".empInfo";
 		return sqlSession.selectOne(statement, empNo);	// 해당 statement와 일치한는 empNo를 가지는 dto의 줄 반환
 	}
+	public void empUpdate(EmployeeDTO dto) {
+		statement = namespace + ".employeeUpdate";
+		sqlSession.update(statement, dto);
+	}
 }

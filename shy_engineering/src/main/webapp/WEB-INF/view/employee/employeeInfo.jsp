@@ -14,7 +14,8 @@
 	<td>입사일</td><td>급여</td></tr>
 		<tr><td>${emp.empNo }</td><td>${emp.empId }</td><td>${emp.empName }</td><td>${emp.empDeptNumber }</td>
 		<td>${emp.empEmail }</td><td>${emp.empPhoneNumber }</td>
-		<td><fmt:formatDate value="${emp.hireDate }" type="date" pattern="yyyy/MM/dd"/></td><td>${emp.salary }</td></tr>
+		<td><fmt:formatDate value="${emp.hireDate }" type="date" pattern="yyyy-MM-dd"/></td><td>${emp.salary }</td></tr>
 </table>
+<a href="empModify?empNo=${emp.empNo }">수정</a>
 </body>
 </html>

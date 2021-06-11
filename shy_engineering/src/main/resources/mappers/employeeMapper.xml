@@ -33,4 +33,11 @@ HIRE_DATE hireDate, SALARY
 	where emp_no = #{empNo} 
 </select>
 
+<update id="employeeUpdate" parameterType="emp">
+	update employees
+	set EMP_DEPT_NUM = #{empDeptNumber}, EMP_EMAIL = #{empEmail},
+		EMP_PHONE = #{empPhoneNumber}, HIRE_DATE = #{hireDate}, SALARY = #{salary}
+	where emp_no = #{empNo}
+</update>
+
 </mapper>
