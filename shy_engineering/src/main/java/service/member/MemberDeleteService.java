@@ -7,7 +7,7 @@ import repository.MemberRepository;
 public class MemberDeleteService {
 	@Autowired
 	MemberRepository memberRepository;
-	public void memDel(String membId) {
-		memberRepository.memDel(membId);
+	public void memDel(String memId) {
+		memberRepository.memDel(memId);
 	}
 }

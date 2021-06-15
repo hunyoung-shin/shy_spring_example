@@ -59,7 +59,7 @@
 <body>
 회원 정보 수정 페이지입니다.<br />
 <form action="memModifyOk" method="post" name="frm">
-<input type="hidden" name="membId" value="${dto.membId }" />
+<input type="hidden" name="memId" value="${dto.membId }" />
 	<table border="1" align="center">
 		<tr><td>아이디</td>
 			<td>${dto.membId}
@@ -102,7 +102,7 @@
 		<tr><td colspan="2" align="center">
 			<input type="submit" value="회원수정" />
 			<input type="button" value="수정 안함" onclick="javascript:history:back();" />
-			<input type="button" value="강퇴" onclick="javascript:location.href='memDel?membId=${dto.membId}'" />
+			<input type="button" value="강퇴" onclick="javascript:location.href='memDel?memId=${dto.membId}'" />
 			</td></tr>
 	</table>
 </form>
