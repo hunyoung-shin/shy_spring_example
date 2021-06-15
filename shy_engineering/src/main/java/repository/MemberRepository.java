@@ -20,4 +20,16 @@ public class MemberRepository {
 		statement = namespace + ".memberList";
 		return sqlSession.selectList(statement);
 	}
+	public MemberDTO memInfo(String membId) {
+		statement = namespace + ".memberInfo";
+		return sqlSession.selectOne(statement, membId);	// dto 하나만 가져오기때문에 selectOne
+	}
+	public void memUpdate(MemberDTO dto) {
+		statement = namespace + ".memberUpdate";
+		sqlSession.insert(statement, dto);
+	}
+	public void memDel(String membId) {
+		statement = namespace + ".memberDelete";
+		sqlSession.delete(statement, membId);
+	}
 }

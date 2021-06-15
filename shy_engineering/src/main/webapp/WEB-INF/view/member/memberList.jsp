@@ -14,7 +14,7 @@
 	<tr><td>아이디</td><td>이름</td><td>연락처</td>
 		<td>성별</td><td>등록일</td></tr>
 	<c:forEach items="${lists}" var="dto">
-		<tr><td>${dto.membId}</td><td>${dto.membName}</td>
+		<tr><td><a href="memInfo?membId=${dto.membId}">${dto.membId}</a></td><td>${dto.membName}</td>
 		<td>${dto.membPhoneNumber}</td><td>${dto.membGender}</td>
 		<td><fmt:formatDate value="${dto.membEnterDate}" type="date"
 			pattern="yyyy-MM-dd"/></td></tr>

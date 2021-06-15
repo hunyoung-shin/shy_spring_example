@@ -5,18 +5,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import command.MemberCommand;
+import service.member.MemberDeleteService;
+import service.member.MemberInfoService;
 import service.member.MemberJoinService;
 import service.member.MemberListService;
+import service.member.MemberModifyService;
 
 @Controller
 @RequestMapping("member")
 public class MemberController {
 	@Autowired	// 이거로 객체 받아오려면 xml context에 등록해야 함 -> 안그러면 list시 문제발생
 	MemberJoinService memberJoinService;
-	@Autowired
+	@Autowired	// -> 객체 생성은 Dispatcher가 자동으로 함
 	MemberListService memberListService;
+	@Autowired
+	MemberInfoService memberInfoService;
+	@Autowired
+	MemberModifyService memberModifyService;
+	@Autowired
+	MemberDeleteService memberDeleteService;
 	
 	@RequestMapping("agree")
 	public String agree() {
@@ -36,4 +46,25 @@ public class MemberController {
 		memberListService.memList(model);
 		return "member/memberList";	// model에 저장된 값을 list로
 	}
+	@RequestMapping("memInfo")
+	public String memInfo(@RequestParam(value = "membId") String membId, Model model) {
+		memberInfoService.memInfo(membId, model);
+		return "member/memberInfo";
+	}
+	@RequestMapping("memModify")
+	public String memModify(@RequestParam(value = "membId") String membId, Model model) {// 하나만 받으면 이렇게
+		memberInfoService.memInfo(membId, model);
+		return "member/memberModify";
+	}
+	@RequestMapping("memModifyOk")
+	public String memModifyOk(MemberCommand memberCommand) {
+		memberModifyService.memUpdate(memberCommand);
+		return "redirect:memInfo?membId=" + memberCommand.getMembId();
+	}
+	@RequestMapping("memDel")
+	public String memDel(@RequestParam(value = "membId") String membId) {
+		memberDeleteService.memDel(membId);
+		return "redirect:memList";
+	}
+	
 }
