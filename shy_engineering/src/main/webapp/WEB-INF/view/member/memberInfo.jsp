@@ -23,6 +23,6 @@
 	<tr><td>등록일</td><td><fmt:formatDate value="${dto.membEnterDate}" type="date" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 	<tr><td>이메일 수신여부</td><td>${dto.membConfirm}</td></tr>
 </table>
-<a href="memModify?memId=${dto.membId}">수정</a>
+<a href="memModify?membId=${dto.membId}">수정</a>
 </body>
 </html>

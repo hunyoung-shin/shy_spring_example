@@ -47,13 +47,13 @@ public class MemberController {
 		return "member/memberList";	// model에 저장된 값을 list로
 	}
 	@RequestMapping("memInfo")
-	public String memInfo(@RequestParam(value = "memId") String memId, Model model) {
-		memberInfoService.memInfo(memId, model);
+	public String memInfo(@RequestParam(value = "memId") String membId, Model model) {
+		memberInfoService.memInfo(membId, model);
 		return "member/memberInfo";
 	}
 	@RequestMapping("memModify")
-	public String memModify(@RequestParam(value = "memId") String memId, Model model) {// 하나만 받으면 이렇게
-		memberInfoService.memInfo(memId, model);
+	public String memModify(@RequestParam(value = "membId") String membId, Model model) {// 하나만 받으면 이렇게
+		memberInfoService.memInfo(membId, model);
 		return "member/memberModify";
 	}
 	@RequestMapping("memModifyOk")
@@ -62,8 +62,8 @@ public class MemberController {
 		return "redirect:memInfo?memId=" + memberCommand.getMembId();
 	}
 	@RequestMapping("memDel")
-	public String memDel(@RequestParam(value = "memId") String memId) {
-		memberDeleteService.memDel(memId);
+	public String memDel(@RequestParam(value = "membId") String membId) {
+		memberDeleteService.memDel(membId);
 		return "redirect:memList";
 	}
 	
