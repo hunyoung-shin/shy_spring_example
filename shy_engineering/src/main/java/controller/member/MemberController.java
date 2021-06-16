@@ -3,6 +3,7 @@ package controller.member;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,12 +11,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import command.MemberCommand;
+import model.AuthInfo;
+import service.member.MemberDeleteOkService;
 import service.member.MemberDeleteService;
 import service.member.MemberDetailService;
 import service.member.MemberInfoService;
 import service.member.MemberJoinService;
 import service.member.MemberListService;
 import service.member.MemberModifyService;
+import service.member.MemberPwChangeService;
 import service.member.MemberUpdateService;
 
 @Controller
@@ -35,6 +39,12 @@ public class MemberController {
 	MemberDetailService memberDetailService;
 	@Autowired
 	MemberUpdateService memberUpdateService;
+	@Autowired
+	MemberDeleteOkService memberDeleteOkService;
+	@Autowired
+	BCryptPasswordEncoder bcryptPasswordEncoder;
+	@Autowired
+	MemberPwChangeService memberPwChangeService;
 	
 	@RequestMapping("agree")
 	public String agree() {
@@ -81,7 +91,7 @@ public class MemberController {
 	public String myPage() {
 		return "member/memberMyPage";
 	}
-	@RequestMapping("myInfo")
+	@RequestMapping("memMyInfo")
 	public String myInfo(HttpSession session, Model model) {
 		memberDetailService.memInfo(session, model);
 		return "member/memberDetail";
@@ -99,6 +109,53 @@ public class MemberController {
 		}else {
 			return "redirect:memUpdate";	// pw틀렸으니 다시
 		}
-		
 	}
+	@RequestMapping("memDelete")
+	public String memDelete() {
+		return "member/memberDelete";
+	}
+	@RequestMapping("memDeleteOk")
+	public String memDeleteOk(@RequestParam(value="membPw") String membPw,
+								HttpSession session) {
+		memberDeleteOkService.del(session, membPw);
+		session.invalidate();
+		return "redirect:/";
+	}
+	@RequestMapping("memPwChange")
+	public String memPwChange() {
+		return "member/memberPwChange";
+	}
+	@RequestMapping("memPwChangeCnf")
+	public String memPwChangeCnf(HttpSession session,
+									@RequestParam(value="membPw") String membPw){
+		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
+		String userPw = authInfo.getUserPw();
+		if(bcryptPasswordEncoder.matches(membPw, userPw)) {
+			return "member/memberPwChangeCnf";
+		}else {
+			return "member/memberPwChange";
+		}
+	}
+	@RequestMapping("memPwChangeOk")
+	public String memPwChangeOk(HttpSession session,
+									@RequestParam(value="membPw") String membPw,
+									@RequestParam(value="newPw") String newPw,
+									@RequestParam(value="newPwCon") String newPwCon) {
+		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
+		String userId = authInfo.getUserId();
+		String pw = authInfo.getUserPw();
+		if(bcryptPasswordEncoder.matches(membPw, pw)){
+			if(newPw.equals(newPwCon)) {
+				// 비밀번호 변경
+				newPw = bcryptPasswordEncoder.encode(newPw);
+				memberPwChangeService.pwOk(userId, newPw);
+				return "redirect:/";
+			}else {
+				return "member/memberPwChange";
+			}
+		}else {
+			return "member/memberPwChange";
+		}
+	}
+	
 }

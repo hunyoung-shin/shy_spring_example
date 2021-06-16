@@ -32,4 +32,8 @@ public class MemberRepository {
 		statement = namespace + ".memberDelete";
 		sqlSession.delete(statement, membId);
 	}
+	public void memPwChange(MemberDTO dto) {
+		statement = namespace + ".memberPwChange";
+		sqlSession.update(statement, dto);
+	}
 }

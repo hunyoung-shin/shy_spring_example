@@ -37,4 +37,9 @@
 	delete from member
 		where MEMB_ID = #{membId}
 </delete>
+<update id="memberPwChange" parameterType="model.MemberDTO">
+	update member
+		set MEMB_PW = #{membPw}
+		where MEMB_ID = #{membId}
+</update>
 </mapper>

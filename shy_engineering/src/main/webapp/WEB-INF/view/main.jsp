@@ -37,8 +37,8 @@
 <!-- 관리자 로그인 -->
 <a href="emp/empList">직원정보 리스트</a><br/>
 <a href="member/memList">회원정보 리스트</a><br/>
-<!-- 일반직원 로그인 -->
-	마이페이지(직원)
+<!-- 일반직원 로그인 : 20210616 과제, 끝나고 주석 삭제 -->
+	<a href="emp/empMyPage">마이페이지(직원)</a>
 </c:if>
 <c:if test="${authInfo.grade == 1 }">
 <!-- 사용자 로그인 -->

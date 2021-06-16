@@ -7,8 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="memMyInfo">회원정보 확인</a> | 
-<a href="memPwChange">비밀번호 변경</a> | 
-<a href="memDelete">탈퇴</a>
+<form action="memPwChangeCnf" method="post" name="frm">
+	비밀번호 : <input type="password" name="membPw">
+	<input type="submit" value="확인">
+</form>
 </body>
 </html>
