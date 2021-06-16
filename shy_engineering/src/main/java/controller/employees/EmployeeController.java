@@ -1,5 +1,7 @@
 package controller.employees;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import command.EmployeeCommand;
 import service.employees.EmployeeDeleteService;
+import service.employees.EmployeeDetailService;
 import service.employees.EmployeeInfoService;
 import service.employees.EmployeeListService;
 import service.employees.EmployeeModifyService;
@@ -30,6 +33,8 @@ public class EmployeeController {
 	EmployeeModifyService employeeModifyService;
 	@Autowired
 	EmployeeDeleteService employeeDeleteService;
+	@Autowired
+	EmployeeDetailService employeeDetailService;
 	
 	@RequestMapping("empList")	// empList 따로받
 	public String empList(Model model) {	// Model : db로부터 받아와서 서비스로 보내는 역할
@@ -65,5 +70,14 @@ public class EmployeeController {
 	public String empDelete(@RequestParam(value="empNo") String empNo) {
 		employeeDeleteService.empDelete(empNo);
 		return "redirect:empList";
+	}
+	@RequestMapping("empMyPage")
+	public String empMyPage() {
+		return "employee/empMyPage";
+	}
+	@RequestMapping("empMyInfo")
+	public String empMyInfo(HttpSession session, Model model) {
+		employeeDetailService.empInfo(session, model);
+		return "";
 	}
 }

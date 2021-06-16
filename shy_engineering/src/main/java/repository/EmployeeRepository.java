@@ -37,4 +37,7 @@ public class EmployeeRepository {
 		statement = namespace + ".employeeDelete";
 		sqlSession.delete(statement, empNo);
 	}
+	public void empInfoId(String empId) {
+		
+	}
 }
