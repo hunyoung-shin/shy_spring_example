@@ -19,11 +19,11 @@
 		</td></tr>
 	<tr><td>비밀번호</td>
 		<td>
-			<input type="text" name="empPw">
+			<input type="password" name="empPw">
 		</td></tr>
 	<tr><td>비밀번호 확인</td>
 		<td>
-			<input type="text" name="empPwCon">
+			<input type="password" name="empPwCon">
 		</td></tr>
 	<tr><td>이름</td>
 		<td>

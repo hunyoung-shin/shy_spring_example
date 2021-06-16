@@ -47,7 +47,7 @@ public class MemberController {
 		return "member/memberList";	// model에 저장된 값을 list로
 	}
 	@RequestMapping("memInfo")
-	public String memInfo(@RequestParam(value = "memId") String membId, Model model) {
+	public String memInfo(@RequestParam(value = "membId") String membId, Model model) {
 		memberInfoService.memInfo(membId, model);
 		return "member/memberInfo";
 	}
