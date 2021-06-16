@@ -38,6 +38,6 @@ public class EmployeeRepository {
 		sqlSession.delete(statement, empNo);
 	}
 	public void empInfoId(String empId) {
-		
+		//추가
 	}
 }

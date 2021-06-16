@@ -15,7 +15,6 @@ public class EmployeeDetailService {
 	public void empInfo(HttpSession session, Model model) {
 		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
 		String empId = authInfo.getUserId();
-		EmployeeDTO dto = employeeRepository.empInfoID(empId);
-		
+		// 추가
 	}
 }
