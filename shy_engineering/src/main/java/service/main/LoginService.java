@@ -17,6 +17,7 @@ public class LoginService {
 	public void login(String loginId, String loginPw, HttpServletRequest request) {
 		AuthInfo authInfo = loginRepository.login(loginId);	//비밀번호는 암호화 되어있어서 여기서는 비교 무리..
 		HttpSession session = request.getSession();
+		session.removeAttribute("pwFail");
 		if(authInfo == null) {
 			session.setAttribute("userFail", "아이디가 존재하지 않습니다.");	// 나중에 다른 것으로 대체할 예정...(아래의 비번도)
 		}else {

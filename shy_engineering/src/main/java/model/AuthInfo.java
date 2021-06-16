@@ -3,7 +3,7 @@ package model;
 public class AuthInfo {
 	String userId;
 	String userPw;
-	String grade;	// 나중에 mapper에서 직원과 회원 구분용
+	String grade;	// loginmapper에서 직원과 회원 구분용
 	
 	public String getUserId() {
 		return userId;
