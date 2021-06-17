@@ -17,6 +17,7 @@ import service.employees.EmployeeListService;
 import service.employees.EmployeeModifyService;
 import service.employees.EmployeeNoService;
 import service.employees.EmployeeService;
+import service.employees.EmployeeUpdateService;
 
 @Controller
 @RequestMapping("emp")	// 받은 데이터중 emp 따로
@@ -35,6 +36,8 @@ public class EmployeeController {
 	EmployeeDeleteService employeeDeleteService;
 	@Autowired
 	EmployeeDetailService employeeDetailService;
+	@Autowired
+	EmployeeUpdateService employeeUpdateService;
 	
 	@RequestMapping("empList")	// empList 따로받
 	public String empList(Model model) {	// Model : db로부터 받아와서 서비스로 보내는 역할
@@ -79,5 +82,10 @@ public class EmployeeController {
 	public String empMyInfo(HttpSession session, Model model) {
 		employeeDetailService.empInfo(session, model);
 		return "employee/empDetail";
+	}
+	@RequestMapping("empUpdate")
+	public String empUpdate(HttpSession session, Model model) {
+		employeeDetailService.empInfo(session, model);
+		return "employee/empUpdate";
 	}
 }

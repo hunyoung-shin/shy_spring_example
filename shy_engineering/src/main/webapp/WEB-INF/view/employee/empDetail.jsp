@@ -18,7 +18,9 @@
 	<tr><td>전화번호</td><td>${dto.empPhoneNumber }</td></tr>
 	<tr><td>입사일</td><td><fmt:formatDate value="${dto.hireDate}" type="date" pattern="yyyy-MM-dd"/></td>
 	<tr><td>급여</td><td>${dto.salary}</td></tr>
-	<tr><td colspan="2"><a href="emp/empUpdate">정보 수정</a></td></tr>
 </table>
+
+<a href="emp/empUpdate">정보 수정</a>
+
 </body>
 </html>

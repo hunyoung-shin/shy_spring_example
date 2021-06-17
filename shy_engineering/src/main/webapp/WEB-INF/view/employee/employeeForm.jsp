@@ -29,7 +29,7 @@
 		<td>
 			<input type="text" name="empName">
 		</td></tr>
-	<tr><td>부서명</td>
+	<tr><td>부서번호</td>
 		<td>
 			<input type="text" name="empDeptNumber">
 		</td></tr>
@@ -37,9 +37,9 @@
 		<td>
 			<input type="text" name="empEmail">
 		</td></tr>
-	<tr><td>연락처</td>
+	<tr><td>전화번호</td>
 		<td>
-			<input type="text" name="empPhone" placeholder="010-1234-1234">
+			<input type="text" name="empPhoneNumber" placeholder="010-1234-1234">
 		</td></tr>
 	<tr><td>입사일</td>
 		<td>
