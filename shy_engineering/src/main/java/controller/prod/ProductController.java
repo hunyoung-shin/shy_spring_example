@@ -31,6 +31,6 @@ public class ProductController {
 	@RequestMapping("prodJoinOk")
 	public String prodJoinOk(ProductCommand productCommand, HttpSession session) {
 		productJoinService.prodJoin(productCommand, session);
-		return "redirect:productList";
+		return "redirect:prodList";
 	}
 }

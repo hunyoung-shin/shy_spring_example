@@ -35,10 +35,10 @@
 <c:if test="${!empty authInfo }">
 <c:if test="${authInfo.grade != 1 }">
 <!-- 관리자 로그인 -->
-<a href="emp/empList">직원정보 리스트</a><br/>
-<a href="member/memList">회원정보 리스트</a><br/>
+<a href="emp/empList">직원정보 리스트</a><br/><br/>
+<a href="member/memList">회원정보 리스트</a><br/><br/>
 <!-- 일반직원 로그인 : 20210616 과제, 끝나고 주석 삭제 -->
-<a href="emp/empMyPage">마이페이지(직원)</a><br/>
+<a href="emp/empMyPage">마이페이지(직원)</a><br/><br/>
 <a href="prod/prodList">상품정보 리스트</a><br/>
 </c:if>
 <c:if test="${authInfo.grade == 1 }">

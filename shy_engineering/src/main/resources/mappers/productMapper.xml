@@ -9,5 +9,9 @@ select goods_num.nextval from dual
 <select id="catList" resultType="model.CategoryDTO">
 select CAT_NUM catNum, CAT_TYPE catType, CAT_NAME catName from category
 </select>
+<insert id="prodInsert" parameterType="model.ProductDTO">
+insert into product(PROD_NO, CAT_NUM, PROD_NAME, PROD_PRICE, PROD_INFO, PROD_IMAGE, EMP_NO)
+	values(#{prodNo}, #{catNum}, #{prodName}, #{prodPrice}, #{prodInfo}, #{prodImage}, #{empNo})
+</insert>
 
 </mapper>

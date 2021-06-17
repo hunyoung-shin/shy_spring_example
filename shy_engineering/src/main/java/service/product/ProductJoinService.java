@@ -6,14 +6,19 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
 import command.ProductCommand;
 import model.AuthInfo;
 import model.ProductDTO;
+import repository.ProductRepository;
 
 public class ProductJoinService {
+	@Autowired
+	ProductRepository productRepository;
 	public void prodJoin(ProductCommand productCommand, HttpSession session) {
+		
 		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
 		String empNo = authInfo.getGrade();
 		ProductDTO dto = new ProductDTO();
@@ -40,7 +45,7 @@ public class ProductJoinService {
 				String originalExt = original.substring(original.lastIndexOf("."));
 				// 저장할 파일명 만들기	// -> uuid : 고유번호 만들기용
 				String store = UUID.randomUUID().toString().replace("-", "") + originalExt;
-				goodsImage += store + ",";
+				goodsImage = store + ",";
 				// 파일 저장
 				File file = new File(filePath + "/" + store);
 				try {
@@ -52,8 +57,9 @@ public class ProductJoinService {
 				}
 			}
 			dto.setProdImage(goodsImage);
+			productRepository.prodInsert(dto);
+			// 결과값이 src쪽으로 가는게 아님 -> .metadata/.plugins 아래로 들어감
 		}
-		
 		
 	}
 }
