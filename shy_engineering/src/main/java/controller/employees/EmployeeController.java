@@ -78,6 +78,6 @@ public class EmployeeController {
 	@RequestMapping("empMyInfo")
 	public String empMyInfo(HttpSession session, Model model) {
 		employeeDetailService.empInfo(session, model);
-		return "";
+		return "employee/empDetail";
 	}
 }

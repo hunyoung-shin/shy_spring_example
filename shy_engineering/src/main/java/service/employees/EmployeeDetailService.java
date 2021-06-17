@@ -14,7 +14,9 @@ public class EmployeeDetailService {
 	EmployeeRepository employeeRepository;
 	public void empInfo(HttpSession session, Model model) {
 		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
-		String empId = authInfo.getUserId();
-		// 추가
+		String empNo = authInfo.getGrade();
+		EmployeeDTO dto = employeeRepository.empInfo(empNo);
+		model.addAttribute("dto", dto);
+		// empUpdate.jsp 만들기
 	}
 }
