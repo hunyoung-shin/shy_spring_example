@@ -8,5 +8,8 @@
 	<bean id="productAutoNumService" class="service.product.ProductAutoNumService"/>
 	<bean id="productRepository" class="repository.ProductRepository"/>
 	<bean id="productJoinService" class="service.product.ProductJoinService"/>
-
+	<bean id="productListService" class="service.product.ProductListService"/>
+	<bean id="productInfoService" class="service.product.ProductInfoService"/>
+	<bean id="productModifyService" class="service.product.ProductModifyService"/>
+	
 </beans>
