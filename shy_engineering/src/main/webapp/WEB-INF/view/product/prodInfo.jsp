@@ -22,9 +22,10 @@
 	<tr><th>설명</th>
 		<td><textarea rows="6" cols="30" name="prodInfo">${dto.prodInfo }</textarea></td></tr>
 	<tr><th colspan="2">
-		<input type="submit" value="상품 정보 수정"/>
-		<input type="button" value="상품 삭제"/>
-		<input type="button" value="리스트로 돌아가기" onclick="javascript:history.back();"/>
+		<input type="submit" value="상품 수정"/>
+		<input type="button" value="상품 삭제"
+				onclick="javascript:location.href='prodDel?prodNo=${dto.prodNo }'"/>
+		<input type="button" value="리스트" onclick="javascript:history.back();"/>
 		</th></tr>	
 </table>
 </form>

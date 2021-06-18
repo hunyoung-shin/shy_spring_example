@@ -40,6 +40,7 @@
 <!-- 일반직원 로그인 : 20210616 과제, 끝나고 주석 삭제 -->
 <a href="emp/empMyPage">마이페이지(직원)</a><br/><br/>
 <a href="prod/prodList">상품정보 리스트</a><br/>
+<a href="category/catList">카테고리 리스트</a>
 </c:if>
 <c:if test="${authInfo.grade == 1 }">
 <!-- 사용자 로그인 -->

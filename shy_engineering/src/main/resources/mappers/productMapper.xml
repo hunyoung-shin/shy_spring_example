@@ -29,6 +29,9 @@ update product
 set PROD_NAME = #{prodName}, PROD_PRICE = #{prodPrice}, PROD_INFO = #{prodInfo}
 where PROD_NO = #{prodNo}
 </update>
-
+<delete id="prodDelete" parameterType="String">
+delete from product
+where PROD_NO = #{prodNo}
+</delete>
 
 </mapper>

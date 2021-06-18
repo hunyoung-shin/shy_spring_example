@@ -38,4 +38,8 @@ public class ProductRepository {
 		statement = namespace + ".prodUpdate";
 		sqlSession.update(statement, dto);
 	}
+	public void prodDelete(String prodNo) {
+		statement = namespace + ".prodDelete";
+		sqlSession.delete(statement, prodNo);
+	}
 }
