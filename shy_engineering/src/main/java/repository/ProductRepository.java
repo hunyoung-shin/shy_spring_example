@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import model.CartDTO;
 import model.CategoryDTO;
 import model.ProductDTO;
 
@@ -41,5 +42,9 @@ public class ProductRepository {
 	public void prodDelete(String prodNo) {
 		statement = namespace + ".prodDelete";
 		sqlSession.delete(statement, prodNo);
+	}
+	public void cartAdd(CartDTO dto) {
+		statement = namespace + ".cartInsert";
+		sqlSession.insert(statement, dto);
 	}
 }

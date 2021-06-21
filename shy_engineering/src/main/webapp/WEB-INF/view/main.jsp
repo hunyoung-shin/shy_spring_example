@@ -6,7 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
+
 <body>
 
 <c:if test="${empty authInfo }">
@@ -51,7 +53,8 @@
 <a href="logout">로그아웃</a>
 </c:if>
 
-<br/>
+<br />
+
 <table width="600">
 	<tr>
 	<c:forEach items="${prodList }" var="dto" varStatus="cnt">
@@ -64,9 +67,7 @@
 		</c:if>
 	</c:forEach>
 	</tr>
-
 </table>
-
 
 </body>
 </html>

@@ -6,32 +6,44 @@
 <select id="autoNum" resultType="string">
 select goods_num.nextval from dual
 </select>
+
 <select id="catList" resultType="model.CategoryDTO">
 select CAT_NUM catNum, CAT_TYPE catType, CAT_NAME catName from category
 </select>
+
 <insert id="prodInsert" parameterType="model.ProductDTO">
 insert into product(PROD_NO, CAT_NUM, PROD_NAME, PROD_PRICE, PROD_INFO, PROD_IMAGE, EMP_NO)
 values(#{prodNo}, #{catNum}, #{prodName}, #{prodPrice}, #{prodInfo}, #{prodImage}, #{empNo})
 </insert>
+
 <select id="prodList" resultType="model.ProductDTO">
 select PROD_NO prodNo, CAT_NUM catNum, PROD_NAME prodName, PROD_PRICE prodPrice,
 		PROD_INFO prodInfo, PROD_IMAGE prodImage, EMP_NO empNo
 from product
 </select>
+
 <select id="prodInfo" parameterType="String" resultType="model.ProductDTO">
 select PROD_NO prodNo, CAT_NUM catNum, PROD_NAME prodName, PROD_PRICE prodPrice,
 		PROD_INFO prodInfo, PROD_IMAGE prodImage, EMP_NO empNo
 from product
 where PROD_NO=#{prodNo}
 </select>
+
 <update id="prodUpdate" parameterType="model.ProductDTO">
 update product
 set PROD_NAME = #{prodName}, PROD_PRICE = #{prodPrice}, PROD_INFO = #{prodInfo}
 where PROD_NO = #{prodNo}
 </update>
+
 <delete id="prodDelete" parameterType="String">
 delete from product
 where PROD_NO = #{prodNo}
 </delete>
+
+<insert id="cartInsert" parameterType="model.CartDTO">
+insert into cart(MEMB_ID, PROD_NO, CAT_NUM, CART_QTY, CART_PRICE)
+values(#{membId}, #{prodNo}, #{catNum}, #{cartQty}, #{cartPrice})
+</insert>
+
 
 </mapper>
