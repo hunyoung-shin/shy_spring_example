@@ -98,7 +98,7 @@ public class EmployeeController {
 	@RequestMapping("empUpdateOk")
 	public String empUpdateOk(EmployeeCommand employeeCommand, HttpSession session) {
 		int i = employeeUpdateService.empUpdate(employeeCommand, session);
-		if(i==1) {
+		if(i == 1) {
 			return "redirect:empDetail";
 		}
 		else {

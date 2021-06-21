@@ -20,7 +20,7 @@
 	<tr><td>급여</td><td>${dto.salary}</td></tr>
 </table>
 
-<a href="emp/empUpdate">정보 수정</a>
+<a href="empUpdate">정보 수정</a>
 
 </body>
 </html>
