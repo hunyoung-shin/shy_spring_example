@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-	function cartAdd(prodNo){
+	function cartAdd(prodNo, prodPrice, catNum){
 		if(${authInfo==null}){
 			alert("로그인을 해주세요.");
 			location.href="../";

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import model.CartDTO;
 import model.CategoryDTO;
+import model.ProductCartDTO;
 import model.ProductDTO;
 
 public class ProductRepository {
@@ -46,5 +47,15 @@ public class ProductRepository {
 	public void cartAdd(CartDTO dto) {
 		statement = namespace + ".cartInsert";
 		sqlSession.insert(statement, dto);
+	}// mapper 부분 잘 볼것 -> 자주 쓰이는 구문
+	public List<String> memCart(String membId){
+		statement = namespace + ".memCart";
+		return sqlSession.selectList(statement, membId);
 	}
+	
+	public ProductCartDTO cartList(CartDTO dto) {
+		statement = namespace + ".cartList";
+		return sqlSession.selectOne(statement, dto);
+	}	// mapper에 resultMap 잘 보기
+		// 미리 참고) association : 1대1 대응일때 사용
 }

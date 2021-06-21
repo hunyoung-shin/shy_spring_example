@@ -13,5 +13,6 @@
 	<bean id="productModifyService" class="service.product.ProductModifyService"/>
 	<bean id="productDeleteService" class="service.product.ProductDeleteService"/>
 	<bean id="cartAddService" class="service.product.CartAddService"/>
+	<bean id="cartListService" class="service.product.CartListService"/>
 	
 </beans>

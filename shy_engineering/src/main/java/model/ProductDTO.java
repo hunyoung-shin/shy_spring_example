@@ -6,7 +6,7 @@ public class ProductDTO {
 	String prodName;
 	String prodPrice;
 	String prodInfo;
-	String prodImage;	// dto에서는 String으로 넣어야 함
+	String prodImage;	// dto에서는 String으로 넣어야 함 -> 주소로 활용될 것
 	String empNo;
 	
 	public String getProdNo() {
