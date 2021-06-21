@@ -17,6 +17,5 @@ public class EmployeeDetailService {
 		String empNo = authInfo.getGrade();
 		EmployeeDTO dto = employeeRepository.empInfo(empNo);
 		model.addAttribute("dto", dto);
-		// empUpdate.jsp 만들기
 	}
 }

@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="empMyInfo">직원정보 확인</a> |
-<a href="empPwChange">비밀번호 변경</a>
+<form action="empPwChangeCnf" method="post" name="frm">
+	비밀번호 : <input type="password" name="empPw">
+	<input type="submit" value="확인">
+</form>
 </body>
 </html>

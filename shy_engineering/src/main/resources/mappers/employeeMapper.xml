@@ -8,16 +8,17 @@ EMP_NO, EMP_ID, EMP_PW, EMP_NAME, EMP_DEPT_NUM,
 EMP_EMAIL, EMP_PHONE, HIRE_DATE, SALARY
 </sql>
 <sql id="selectColumn">
-EMP_NO empNO, EMP_ID empId, EMP_PW empPw,
+EMP_NO empNo, EMP_ID empId, EMP_PW empPw,
 EMP_NAME empName, EMP_DEPT_NUM empDeptNumber,
 EMP_EMAIL empEmail, EMP_PHONE empPhoneNumber,
 HIRE_DATE hireDate, SALARY
 </sql>
 
 <insert id="employeeInsert" parameterType="emp">
-	insert into employees(<include refid="baseColumn"/>)
-	values(#{empNo},#{empId},#{empPw},#{empName},#{empDeptNumber},
-			#{empEmail},#{empPhoneNumber},#{hireDate},#{salary})
+	insert into employees(<include refid="baseColumn" />)
+	values(#{empNo},#{empId},#{empPw},#{empName},
+			#{empDeptNumber},#{empEmail},#{empPhoneNumber},
+			#{hireDate},#{salary})
 </insert>
 
 <select id="empNo" resultType="int">
@@ -46,5 +47,10 @@ HIRE_DATE hireDate, SALARY
 	where emp_no = #{empNo}
 </delete>
 
+<update id="employeePwChange" parameterType="emp">
+	update employees
+	set EMP_PW = #{empPw}
+	where emp_no = #{empNo}
+</update>
 
 </mapper>

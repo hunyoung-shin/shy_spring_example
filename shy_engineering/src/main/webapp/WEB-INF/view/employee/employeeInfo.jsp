@@ -8,14 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-<table border = 1>
-	<tr><td>사원번호</td><td>아이디</td><td>이름</td><td>부서명</td>
-	<td>이메일</td><td>연락처</td>
-	<td>입사일</td><td>급여</td></tr>
-		<tr><td>${emp.empNo }</td><td>${emp.empId }</td><td>${emp.empName }</td><td>${emp.empDeptNumber }</td>
-		<td>${emp.empEmail }</td><td>${emp.empPhoneNumber }</td>
-		<td><fmt:formatDate value="${emp.hireDate }" type="date" pattern="yyyy-MM-dd"/></td><td>${emp.salary }</td></tr>
-</table>
+직원번호 : ${emp.empNo }<br />
+아이디 : ${emp.empId }<br />
+이름 : ${emp.empName }<br />
+부서명 : ${emp.empDeptNumber }<br />
+이메일 : ${emp.empEmail }<br />
+연락처 : ${emp.empPhoneNumber }<br />
+입사일 : <fmt:formatDate value="${emp.hireDate }" type="date" 
+		pattern="yy/MM/dd"/> <br />
+급여 : ${emp.salary }<br />
 <a href="empModify?empNo=${emp.empNo }">수정</a>
 </body>
 </html>

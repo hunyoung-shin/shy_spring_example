@@ -8,10 +8,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import command.EmployeeCommand;
 import model.AuthInfo;
 import model.EmployeeDTO;
+import repository.EmployeeRepository;
 
 public class EmployeeUpdateService {
 	@Autowired
 	BCryptPasswordEncoder bcryptPasswordEncoder;
+	@Autowired
+	EmployeeRepository employeeRepository;
 	
 	public int empUpdate(EmployeeCommand employeeCommand, HttpSession session) {
 		EmployeeDTO dto = new EmployeeDTO();
@@ -22,9 +25,14 @@ public class EmployeeUpdateService {
 		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
 		dto.setEmpNo(Long.parseLong(authInfo.getGrade()));
 		if(bcryptPasswordEncoder.matches(employeeCommand.getEmpPw(), authInfo.getUserPw())) {
-			// 여기부터...
+			employeeRepository.empUpdate(dto);
+			session.removeAttribute("pwFail");
+			return 1;
+		}
+		else {
+			session.setAttribute("pwFail", "비밀번호가 틀렸습니다.");
+			return 2;
 		}
 		
-		return 1;
 	}
 }
