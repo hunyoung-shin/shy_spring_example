@@ -40,7 +40,7 @@
 <!-- 일반직원 로그인 : 20210616 과제, 끝나고 주석 삭제 -->
 <a href="emp/empMyPage">마이페이지(직원)</a><br/><br/>
 <a href="prod/prodList">상품정보 리스트</a><br/>
-<a href="category/catList">카테고리 리스트</a>
+<a href="category/catList">카테고리 리스트(예정)</a>
 </c:if>
 <c:if test="${authInfo.grade == 1 }">
 <!-- 사용자 로그인 -->
@@ -50,5 +50,23 @@
 <br />
 <a href="logout">로그아웃</a>
 </c:if>
+
+<br/>
+<table width="600">
+	<tr>
+	<c:forEach items="${prodList }" var="dto" varStatus="cnt">
+		<td><a href="prod/prodInfo?prodNo=${dto.prodNo }">
+			<img width="200" src="product/upload/${dto.prodImage.split(',')[0] }"/><br/>
+			${dto.prodName }<br/>${dto.prodPrice }원
+		</a></td>
+		<c:if test="${cnt.count % 3 == 0}">
+			</tr><tr>	
+		</c:if>
+	</c:forEach>
+	</tr>
+
+</table>
+
+
 </body>
 </html>

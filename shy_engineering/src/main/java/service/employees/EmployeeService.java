@@ -12,8 +12,9 @@ public class EmployeeService {
 	@Autowired
 	EmployeeRepository employeeRepository;
 	public void insertEmp(EmployeeCommand employeeCommand) {
+		System.out.println("insertEmp");
 		EmployeeDTO dto = new EmployeeDTO();
-		dto.setEmpDeptNumber(employeeCommand.getEmpDeptNumber());;
+		dto.setEmpDeptNumber(employeeCommand.getEmpDeptNumber());
 		dto.setEmpEmail(employeeCommand.getEmpEmail());
 		dto.setEmpId(employeeCommand.getEmpId());
 		dto.setEmpName(employeeCommand.getEmpName());

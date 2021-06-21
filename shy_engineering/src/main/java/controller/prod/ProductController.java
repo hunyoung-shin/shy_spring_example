@@ -63,5 +63,10 @@ public class ProductController {
 		productDeleteService.prodDel(prodNo, session);
 		return "redirect:prodList";
 	}
+	@RequestMapping("prodInfo")
+	public String prodInfo(@RequestParam(value="prodNo") String prodNo) {
+		
+		return "product/prodDetail";
+	}
 	
 }
