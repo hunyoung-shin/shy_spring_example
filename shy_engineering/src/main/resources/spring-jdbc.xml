@@ -17,6 +17,7 @@
 		<property name="user" value="server"/>
 		<property name="password" value="ORACLE"/>
 	</bean>
+
 	<!-- SqlSessionFactory 객체 주입 mybatis jdbc설정-->
 	<bean id="sqlSessionFactory" 
 			class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -32,10 +33,13 @@
 		<constructor-arg name="sqlSessionFactory" 
 			ref="sqlSessionFactory" />
 	</bean>
+
 	
 	<bean id="transactionManager"
 	class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager" />
+	
+
 </beans>

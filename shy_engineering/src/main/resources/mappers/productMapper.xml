@@ -22,7 +22,7 @@
 	from product
 </select>
 
-<select id="prodInfo" parameterType="String" resultType="model.ProductDTO">
+<select id="prodInfo" parameterType="string" resultType="model.ProductDTO">
 	select PROD_NO prodNo, CAT_NUM catNum, PROD_NAME prodName, PROD_PRICE prodPrice,
 			PROD_INFO prodInfo, PROD_IMAGE prodImage, EMP_NO empNo
 	from product
@@ -35,7 +35,7 @@
 	where PROD_NO = #{prodNo}
 </update>
 
-<delete id="prodDelete" parameterType="String">
+<delete id="prodDelete" parameterType="string">
 	delete from product
 	where PROD_NO = #{prodNo}
 </delete>
@@ -54,7 +54,7 @@
 	values(#{membId}, #{prodNo}, #{catNum}, #{cartQty}, #{cartPrice})
 </insert>
 
-<select id="memCart" parameterType="String" resultType="String">
+<select id="memCart" parameterType="string" resultType="string">
 	select PROD_NO 
 	from cart
 	where MEMB_ID = #{membId}
@@ -70,14 +70,14 @@
 </select>
 <resultMap type="model.ProductCartDTO" id="productCartMap">
 	<association property="productDTO" javaType="model.ProductDTO">
-		<result column="PROD_NAME" jdbcType="varchar" property="prodName"/>
-		<result column="PROD_PRICE" jdbcType="varchar" property="prodPrice"/>
+		<result column="PROD_NAME" jdbcType="VARCHAR" property="prodName"/>
+		<result column="PROD_PRICE" jdbcType="VARCHAR" property="prodPrice"/>
 	</association>
 	<association property="cartDTO" javaType="model.CartDTO">
-		<id column="MEMB_ID" jdbcType="varchar" property="membId"/>
-		<id column="PROD_NO" jdbcType="varchar" property="prodNo"/>
-		<result column="CART_QTY" jdbcType="varchar" property="cartQty"/>
-		<result column="CART_PRICE" jdbcType="varchar" property="cartPrice"/>
+		<id column="MEMB_ID" jdbcType="VARCHAR" property="membId"/>
+		<id column="PROD_NO" jdbcType="VARCHAR" property="prodNo"/>
+		<result column="CART_QTY" jdbcType="VARCHAR" property="cartQty"/>
+		<result column="CART_PRICE" jdbcType="VARCHAR" property="cartPrice"/>
 	</association>
 </resultMap>
 
