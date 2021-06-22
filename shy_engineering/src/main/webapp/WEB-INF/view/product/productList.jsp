@@ -8,7 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-상품 정보 리스트 페이지입니다.<br/>
+상품 정보 리스트
+<hr/>
 <table border = 1>
 	<tr><td>이미지</td><td>상품번호</td><td>상품명</td><td>가격</td>
 		</tr>

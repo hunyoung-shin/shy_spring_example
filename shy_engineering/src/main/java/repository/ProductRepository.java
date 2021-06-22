@@ -58,4 +58,8 @@ public class ProductRepository {
 		return sqlSession.selectOne(statement, dto);
 	}	// mapper에 resultMap 잘 보기
 		// 미리 참고) association : 1대1 대응일때 사용
+	public void cartQtyDown(CartDTO dto) {
+		statement = namespace + ".cartQtyDown";
+		sqlSession.update(statement, dto);
+	}
 }

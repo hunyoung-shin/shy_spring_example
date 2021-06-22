@@ -25,7 +25,7 @@
 </script>
 </head>
 <body>
-제품 상세 페이지<br/>
+제품 상세 페이지<hr/>
 <table align="center" width="800">
 	<tr><td rowspan="4">
 			<img width="300" src="../product/upload/${dto.prodImage.split(',')[0] }" />

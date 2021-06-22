@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import command.ProductCommand;
 import service.product.CartAddService;
 import service.product.CartListService;
+import service.product.CartQtyDownService;
 import service.product.ProductAutoNumService;
+import service.product.ProductBuyService;
 import service.product.ProductDeleteService;
 import service.product.ProductInfoService;
 import service.product.ProductJoinService;
@@ -37,7 +39,11 @@ public class ProductController {
 	@Autowired
 	CartAddService cartAddService;
 	@Autowired
-	CartListService cartListService;	// 차후에 다시 추가
+	CartListService cartListService;
+	@Autowired
+	CartQtyDownService cartQtyDownService;
+	@Autowired
+	ProductBuyService productBuyService;
 
 	@RequestMapping("prodList")
 	public String prodList(Model model) {
@@ -88,5 +94,18 @@ public class ProductController {
 		cartAddService.cartAdd(prodNo, cartQty, prodPrice, catNum, session);
 		return "redirect:cartList";
 	}
-	
+	@RequestMapping("prodCartQtyDown")
+	public String prodCartQtyDown(@RequestParam(value="prodNo") String prodNo,
+									@RequestParam(value="prodPrice") String prodPrice,
+									HttpSession session) {
+		cartQtyDownService.CartQtyDown(prodNo, prodPrice, session);
+		return "redirect:cartList";
+	}
+	@RequestMapping("prodBuy")
+	public String prodBuy(@RequestParam(value="prodCk") String prodCk[],
+										// 2개이상 있으므로 배열로 처리되어있음 -> 받아올 때도 배열로
+							Model model, HttpSession session) {
+		productBuyService.prodBuy(session, prodCk, model);
+		return "product/order";
+	}
 }

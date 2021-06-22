@@ -61,12 +61,10 @@
 </select>
 
 <select id="cartList" parameterType="model.CartDTO" resultMap="productCartMap">
-	select PROD_NAME, PROD_PRICE,
-			MEMB_ID ,CART_QTY, CART_PRICE, c.PROD_NO
-	from product p join cart c
-		on p.PROD_NO = c.PROD_NO
-	where c.MEMB_ID = ${membId}
-		and c.PROD_NO = #{prodNo}
+	select prod_name, prod_price,  memb_id, c.prod_no, cart_qty, cart_price
+	from product p, cart c
+	where p.prod_no = c.prod_no and c.memb_id = #{membId} 
+		and c.prod_no = #{prodNo}
 </select>
 <resultMap type="model.ProductCartDTO" id="productCartMap">
 	<association property="productDTO" javaType="model.ProductDTO">
@@ -80,5 +78,12 @@
 		<result column="CART_PRICE" jdbcType="VARCHAR" property="cartPrice"/>
 	</association>
 </resultMap>
+
+<update id="cartQtyDown" parameterType="model.ProductDTO">
+	update cart
+	set cart_Qty = cart_Qty - 1,
+		CART_PRICE = CART_PRICE - #{cartPrice}
+	where memb_id = #{membId} and prod_no = #{prodNo}
+</update>
 
 </mapper>

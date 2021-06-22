@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-수정 페이지 입니다.<br/>
+수정 페이지 입니다.<hr/>
 <form action="prodModifyOk" method="post">
 <input type="hidden" name="prodNo" value="${dto.prodNo }"/>
 <table border = 1>
