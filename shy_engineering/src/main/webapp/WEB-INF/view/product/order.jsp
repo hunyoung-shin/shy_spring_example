@@ -45,7 +45,7 @@
 		<td><input type="text" name="${purchPhoneNumber }"/></td></tr>
 	<tr><th>주문 문자</th>
 		<td><input type="text" name="${purchMsg }"/></td></tr>
-	<tr><th colspan="2"><input type="submit" value="결제하기" /></th></tr>
+	<tr><th colspan="2"><input type="submit" value="주문하기" /></th></tr>
 </table>
 </form>
 </body>

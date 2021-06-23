@@ -59,7 +59,7 @@
 			전체금액 : <span id="totalPrice">${total }</span><br/>
 		</td></tr>
 	<tr><td colspan="5" align="center">
-			<input type="submit" value="구매하기" onclick="javascript:location.href=''" />
+			<input type="submit" value="구매하기" />
 		</td></tr>
 </table>
 </form>

@@ -37,4 +37,13 @@ public class CartDTO {
 	public void setCartPrice(String cartPrice) {
 		this.cartPrice = cartPrice;
 	}
+	
+	// prodOrderService에서 어쩔수 없이 넣은 것 -> 상관은 없다고 함
+	String purchNo;
+	public String getPurchNo() {
+		return purchNo;
+	}
+	public void setPurchNo(String purchNo) {
+		this.purchNo = purchNo;
+	}
 }

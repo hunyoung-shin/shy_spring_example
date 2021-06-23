@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import model.CartDTO;
 import model.CategoryDTO;
+import model.PaymentDTO;
 import model.ProductCartDTO;
 import model.ProductDTO;
+import model.PurchListDTO;
+import model.PurchaseDTO;
 
 public class ProductRepository {
 	@Autowired
@@ -47,12 +50,11 @@ public class ProductRepository {
 	public void cartAdd(CartDTO dto) {
 		statement = namespace + ".cartInsert";
 		sqlSession.insert(statement, dto);
-	}// mapper 부분 잘 볼것 -> 자주 쓰이는 구문
+	}	// mapper 부분 잘 볼것 -> 자주 쓰이는 구문
 	public List<String> memCart(String membId){
 		statement = namespace + ".memCart";
 		return sqlSession.selectList(statement, membId);
 	}
-	
 	public ProductCartDTO cartList(CartDTO dto) {
 		statement = namespace + ".cartList";
 		return sqlSession.selectOne(statement, dto);
@@ -62,4 +64,24 @@ public class ProductRepository {
 		statement = namespace + ".cartQtyDown";
 		sqlSession.update(statement, dto);
 	}
+	public void purchInsert(PurchaseDTO dto) {
+		statement = namespace + ".purchInsert";
+		sqlSession.insert(statement, dto);
+	}
+	public void purchListInsert(CartDTO dto) {
+		statement = namespace + ".purchListInsert";
+		sqlSession.insert(statement, dto);
+	}	// mapper에서 잘 확인
+	public void cartProdDel(CartDTO dto) {
+		statement = namespace + ".cartProdDel";
+		sqlSession.delete(statement, dto);
+	}
+	public List<PurchListDTO> purchList(String membId) {
+		statement = namespace + ".purchList";
+		return sqlSession.selectList(statement, membId);
+	}
+	public void payInsert(PaymentDTO dto) {
+		statement = namespace + ".payInsert";
+		sqlSession.insert(statement, dto);
+	}// 여기 payNo 잘써먹는 형태이므로 잘 알아둘 것
 }

@@ -16,4 +16,7 @@
 	<bean id="cartListService" class="service.product.CartListService"/>
 	<bean id="cartQtyDownService" class="service.product.CartQtyDownService"/>
 	<bean id="productBuyService" class="service.product.ProductBuyService"/>
+	<bean id="prodOrderService" class="service.product.ProdOrderService"/>
+	<bean id="purchaseListService" class="service.product.PurchaseListService"/>
+	<bean id="paymentService" class="service.product.PaymentService"/>
 </beans>

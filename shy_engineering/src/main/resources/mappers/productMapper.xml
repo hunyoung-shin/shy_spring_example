@@ -86,4 +86,44 @@
 	where memb_id = #{membId} and prod_no = #{prodNo}
 </update>
 
+<insert id="purchInsert" parameterType="model.PurchaseDTO">
+	insert into purchase(PURCH_NO, PURCH_DATE, PURCH_TOTAL, PURCH_ADDR,
+							PURCH_RECEIVER, PURCH_PHONE_NUMBER, PURCH_MSG, MEMB_ID)
+	values(#{purchNo}, sysdate, #{purchTotal}, #{purchAddr},
+			#{purchReceiver}, #{purchPhoneNumber}, #{purchMsg}, #{membId})
+</insert>
+
+<insert id="purchListInsert" parameterType="model.CartDTO">
+	insert into purchase_list(PURCH_NO, PROD_NO, CAT_NUM, PURCH_QTY, PURCH_PRICE)
+	select #{purchNo}, PROD_NO, CAT_NUM, CART_QTY, CART_PRICE
+	from cart
+	where memb_id = #{membId} and prod_no = #{prodNo}
+</insert>
+
+<delete id="cartProdDel" parameterType="model.CartDTO">
+	delete from cart
+	where memb_id = #{membId} and prod_no = #{prodNo}
+</delete>
+
+<select id="purchList" parameterType="string" resultType="model.PurchListDTO">
+	select pr.prod_no prodNo, prod_name prodName, prod_image prodImage,
+        	pu.purch_no purchNo, purch_date purchDate, purch_total purchTotal,
+        	pay_no payNo
+	from product pr, purchase_list pl, purchase pu, payment pa
+	where pr.prod_no = pl.prod_no  
+    	and pl.purch_no = pu.purch_no 
+    	and pu.purch_no = pa.purch_no(+)
+    	and pu.memb_id = #{membId}
+</select>
+
+<sql id="payNo">
+	select to_char(sysdate,'yyyyMMdd') || nvl2(max(pay_no),substr(max(pay_no),-6), 100000)+1
+		from payment
+	where substr(pay_date,1,8) = to_char(sysdate,'yyyyMMdd')
+</sql>
+<insert id="payInsert" parameterType="model.PaymentDTO">
+	insert into payment(PAY_NO, PURCH_NO, PAY_METHOD, PAY_ACC_NUM, PAY_PRICE, PAY_DATE, PAY_CARD_BANK)
+	values((<include refid="payNo" />), #{purchNo}, #{payMethod}, #{payAccNum}, #{payPrice}, sysdate, #{payCardBank})
+</insert>
+
 </mapper>
