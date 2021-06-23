@@ -16,7 +16,7 @@ import repository.ProductRepository;
 public class ProdOrderService {
 	@Autowired
 	ProductRepository productRepository;
-	public void prodOrder(ProdOrderCommand prodOrderCommand, HttpSession session) {
+	public String prodOrder(ProdOrderCommand prodOrderCommand, HttpSession session) {
 		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
 		String membId = authInfo.getUserId();
 		PurchaseDTO dto = new PurchaseDTO();
@@ -48,5 +48,6 @@ public class ProdOrderService {
 			productRepository.purchListInsert(d);
 			productRepository.cartProdDel(d);
 		}
+		return purchNo;
 	}
 }
