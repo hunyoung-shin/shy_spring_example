@@ -119,7 +119,7 @@
 <sql id="payNo">
 	select to_char(sysdate,'yyyyMMdd') || nvl2(max(pay_no),substr(max(pay_no),-6), 100000)+1
 		from payment
-	where substr(pay_date,1,8) = to_char(sysdate,'yyyyMMdd')
+	where to_char(pay_date,'yyyyMMdd') = to_char(sysdate,'yyyyMMdd')
 </sql>
 <insert id="payInsert" parameterType="model.PaymentDTO">
 	insert into payment(PAY_NO, PURCH_NO, PAY_METHOD, PAY_ACC_NUM, PAY_PRICE, PAY_DATE, PAY_CARD_BANK)
