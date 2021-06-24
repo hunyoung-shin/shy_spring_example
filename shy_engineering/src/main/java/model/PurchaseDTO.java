@@ -62,5 +62,4 @@ public class PurchaseDTO {
 		this.membId = membId;
 	}
 	
-	
 }

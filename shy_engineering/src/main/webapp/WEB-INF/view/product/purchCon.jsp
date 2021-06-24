@@ -12,18 +12,24 @@
 <table width="800" border="1">
 
 	<tr><th>주문일자/결제번호</th>
-		<th colspan="2">${dto.prodName }/주문번호</th>
+		<th colspan="2">상품명/주문번호</th>
 		<th>주문상태</th></tr>
-	<c:forEach items="${list }" var="dto">
-	<tr><td>#{dto.purchDate } / ${dto.payNo }</td>
+	<c:forEach items="${list }" var="dto">	
+	<tr><td>${dto.purchDate } / ${dto.payNo }</td>
 		<td rowspan="2">
 			<img width="100" src="../product/upload/${dto.prodImage.split(',')[0] }" /></td>
 		<td rowspan="2">
-			${dto.prodName }/${dto.purchNo }</td>
+			${dto.prodName } / ${dto.purchNo }</td>
 		<td rowspan="2">
 			<c:if test="${dto.payNo == null }">
-				<a href="paymentOk?purchNo=${dto.purchNo }$payPrice=${dto.purchTotal}">주문하기</a></c:if>
-			<c:if test="${dto.payNo != null }">주문완료<br/>리뷰 작성</c:if>
+				<a href="paymentOk?purchNo=${dto.purchNo}&payPrice=${dto.purchTotal}">주문하기</a></c:if>
+			<c:if test="${dto.payNo != null }">주문완료
+			<br/>
+			<c:if test="${dto.reviewContent == null }">
+				<a href="prodReview?purchNo=${dto.purchNo }&prodNo=${dto.prodNo}&prodName=${dto.prodName}">리뷰 작성</a></c:if>
+			<c:if test="${dto.reviewContent != null }">
+				<a href="prodReviewUpdate?purchNo=${dto.purchNo }&prodNo=${dto.prodNo}&prodName=${dto.prodName}">리뷰 수정</a></c:if>
+			</c:if>
 		</td></tr>
 	<tr><td>결제금액 : ${dto.purchTotal }원</td></tr>
 	</c:forEach>

@@ -2,26 +2,24 @@
     pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<% 	pageContext.setAttribute("br", "\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-	function cartAdd(prodNo, prodPrice, catNum){
-		if(${authInfo==null}){
-			alert("로그인을 해주세요.");
-			location.href="../";
-			return false;
-		}else{
-			var qty=document.getElementById("qty").value;
-			location.href="cartAdd?prodNo="+prodNo
-									+"&cartQty="+qty
-									+"&prodPrice="+prodPrice
-									+"&catNum="+catNum;
-		}
-		
+function cartAdd(prodNo,prodPrice,catNum){
+	if(${authInfo == null}){
+		alert("로그인을 하셔야 합니다.");
+		location.href="../";
+		return false;
+	}else{
+		var qty = document.getElementById("qty").value;
+		location.href="cartAdd?prodNo="+prodNo+"&cartQty="+qty+"&prodPrice="+prodPrice+"&catNum="+catNum;
 	}
+}
 </script>
 </head>
 <body>
@@ -51,5 +49,13 @@
 			</c:forTokens>
 		</td></tr>
 </table>
+<c:forEach items="${list }" var="dto1">
+<table align ="center" width = "800">
+<tr><td>
+<p>
+${dto1.membId } / 구매일 : ${dto1.purchDate } / 리뷰 등록일 : ${dto1.reviewDate }<br />
+${fn:replace(dto1.reviewContent,br,"<br />") }
+</p></td></tr>	
+</c:forEach>
 </body>
 </html>

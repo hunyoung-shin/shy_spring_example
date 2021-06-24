@@ -11,8 +11,8 @@ import repository.ProductRepository;
 public class PaymentService {
 	@Autowired
 	ProductRepository productRepository;
-	public void payment(String purchNo, String payPrice,
-						String payCardBank, String payAccNum, HttpSession session) {
+	public void payment(String purchNo, String payPrice, 
+			String payAccNum, String payCardBank,HttpSession session) {
 		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
 		String membId = authInfo.getUserId();
 		PaymentDTO dto = new PaymentDTO();

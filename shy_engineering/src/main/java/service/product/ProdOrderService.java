@@ -30,12 +30,6 @@ public class ProdOrderService {
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");	// 날짜 형식 설정용
 		String purchNo = df.format(new Date());
 		dto.setPurchNo(purchNo);
-	
-		System.out.println(prodOrderCommand.getPurchAddr());
-		System.out.println(prodOrderCommand.getPurchMsg());
-		System.out.println(prodOrderCommand.getPurchPhoneNumber());
-		System.out.println(prodOrderCommand.getPurchReceiver());
-		
 		productRepository.purchInsert(dto);
 		
 		String prodNums[] = prodOrderCommand.getProdNums().split(",");

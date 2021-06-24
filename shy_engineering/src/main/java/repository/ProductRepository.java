@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import model.CartDTO;
 import model.CategoryDTO;
 import model.PaymentDTO;
+import model.ProdReviewDTO;
 import model.ProductCartDTO;
 import model.ProductDTO;
 import model.PurchListDTO;
 import model.PurchaseDTO;
+import model.ReviewDTO;
 
 public class ProductRepository {
 	@Autowired
@@ -84,4 +86,21 @@ public class ProductRepository {
 		statement = namespace + ".payInsert";
 		sqlSession.insert(statement, dto);
 	}// 여기 payNo 잘써먹는 형태이므로 잘 알아둘 것
+	public void reviewWrite(ReviewDTO dto) {
+		statement = namespace + ".reviewInsert";
+		sqlSession.insert(statement, dto);
+	}
+	public ReviewDTO reviewSelect(ReviewDTO dto) {
+		statement = namespace + ".reviewSelect";
+		return sqlSession.selectOne(statement, dto);
+	}
+	public void reviewUpdate(ReviewDTO dto) {
+		statement = namespace + ".reviewUpdate";
+		sqlSession.update(statement, dto);
+	}
+	public List<ProdReviewDTO> prodReview(String prodNo) {
+		statement = namespace + ".prodReviewSelect";
+		return sqlSession.selectOne(statement, prodNo);
+	}
+	
 }

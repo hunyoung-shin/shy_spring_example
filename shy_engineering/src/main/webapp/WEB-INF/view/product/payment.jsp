@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,9 +15,15 @@
 	<tr><td>구매번호</td><td>${purchNo }</td></tr>
 	<tr><td>결제금액</td><td>${payPrice }</td></tr>
 	<tr><td>결제방법</td><td>카드</td></tr>
-	<tr><td>카드회사/은행명</td><td><input type="text" name="payCardBank"></td></tr>
-	<tr><td>카드번호</td><td><input type="text" name="payAccNum"></td></tr>
-	<tr><th colspan="2"><input type="submit" value="결제완료" /></th></tr>
+	<tr><td>카드번호</td>
+		<td><input type="text" name="payAccNum"/></td>
+	</tr>
+	<tr><td>카드회사/은행명</td>
+		<td><input type="text" name="payCardBank"/></td>
+	</tr>
+	<tr><th colspan="2">
+		<input type="submit" value="결제완료"/>
+		</th></tr>
 </table>
 </form>
 </body>

@@ -27,8 +27,7 @@
 		<input type="password" name="loginPw" /><span>${pwFail}</span>
 	</td></tr>
 <tr><td colspan="3">
-		아이디/비밀번호 찾기 |
-		<a href="member/agree" >회원가입</a>
+		아이디/비밀번호 찾기 | <a href="member/agree" >회원가입</a>
 	</td></tr>
 </table>
 </form>
@@ -39,9 +38,9 @@
 <!-- 관리자 로그인 -->
 <a href="emp/empList">직원정보 리스트</a><br/><br/>
 <a href="member/memList">회원정보 리스트</a><br/><br/>
-<!-- 일반직원 로그인 : 20210616 과제, 끝나고 주석 삭제 -->
 <a href="emp/empMyPage">마이페이지(직원)</a><br/><br/>
-<a href="prod/prodList">상품정보 리스트</a><br/>
+<a href="prod/prodList">상품정보 리스트</a><br/><br/>
+<a href="sales/salesList">판매 현황</a><br/><br/>
 </c:if>
 <c:if test="${authInfo.grade == 1 }">
 <!-- 사용자 로그인 -->

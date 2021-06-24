@@ -24,6 +24,9 @@ import service.product.ProductJoinService;
 import service.product.ProductListService;
 import service.product.ProductModifyService;
 import service.product.PurchaseListService;
+import service.product.ReviewModifyService;
+import service.product.ReviewUpdateService;
+import service.product.ReviewWriteService;
 
 @Controller
 @RequestMapping("prod")
@@ -54,6 +57,12 @@ public class ProductController {
 	PurchaseListService purchaseListService;
 	@Autowired
 	PaymentService paymentService;
+	@Autowired
+	ReviewWriteService reviewWriteService;
+	@Autowired
+	ReviewModifyService reviewModifyService;
+	@Autowired
+	ReviewUpdateService reviewUpdateService;
 
 	@RequestMapping("prodList")
 	public String prodList(Model model) {
@@ -133,7 +142,7 @@ public class ProductController {
 							@RequestParam(value="payPrice") String payPrice, Model model) {
 		model.addAttribute("purchNo", purchNo);
 		model.addAttribute("payPrice", payPrice);
-		return "redirect:purchCon";
+		return "product/payment";
 	}
 	@RequestMapping("doPayment")
 	public String doPayment(@RequestParam(value="purchNo") String purchNo,
@@ -144,4 +153,37 @@ public class ProductController {
 		paymentService.payment(purchNo, payPrice, payCardBank, payAccNum, session);
 		return "redirect:purchCon";
 	}
+	@RequestMapping("prodReview")
+	public String prodReview(@RequestParam(value="purchNo") String purchNo,
+								@RequestParam(value="prodNo") String prodNo,
+								@RequestParam(value="prodName") String prodName,
+								Model model) {
+		model.addAttribute("purchNo", purchNo);
+		model.addAttribute("prodNo", prodNo);
+		model.addAttribute("prodName", prodName);
+		return "product/prodReview";
+	}
+	@RequestMapping("reviewOk")
+	public String reviewOk(@RequestParam(value="prodNo") String prodNo,
+							@RequestParam(value="purchNo") String purchNo,
+							@RequestParam(value="reviewContent") String reviewContent) {
+		reviewWriteService.reviewWrite(prodNo, purchNo, reviewContent);
+		return "redirect:purchCon";
+	}
+	@RequestMapping("prodReviewUpdate")
+	public String prodReviewUpdate(@RequestParam(value="purchNo") String purchNo,
+									@RequestParam(value="prodNo") String prodNo,
+									@RequestParam(value="prodName") String prodName,
+									Model model) {
+		reviewUpdateService.reviewUpdate(prodNo, purchNo, prodName, model);
+		return "product/prodReviewUpdate";
+	}
+	@RequestMapping("reviewUpdateOk")
+	public String reviewUpdateOk(@RequestParam(value="purchNo") String purchNo,
+									@RequestParam(value="prodNo") String prodNo,
+									@RequestParam(value="reviewContent") String reviewContent) {
+		reviewModifyService.reviewUpdate(purchNo, prodNo, reviewContent);
+		return "redirect:purchCon";
+	}
+	
 }

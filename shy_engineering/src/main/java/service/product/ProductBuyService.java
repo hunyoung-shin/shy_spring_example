@@ -16,7 +16,7 @@ import repository.ProductRepository;
 public class ProductBuyService {
 	@Autowired
 	ProductRepository productRepository;
-	public void prodBuy(HttpSession session, String prodCk[], Model model) {
+	public void prodBuy(HttpSession session, String [] prodCk, Model model) {
 		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
 		String membId = authInfo.getUserId();
 		List<ProductCartDTO> list = new ArrayList<ProductCartDTO>();
@@ -24,9 +24,9 @@ public class ProductBuyService {
 			CartDTO dto = new CartDTO();
 			dto.setMembId(membId);
 			dto.setProdNo(prodNo);
-			ProductCartDTO prodCartDTO = productRepository.cartList(dto);
-			list.add(prodCartDTO);
+			ProductCartDTO dto1 = productRepository.cartList(dto);
+			list.add(dto1);
 		}
-		model.addAttribute("list", list);
+		model.addAttribute("list",list );
 	}
 }
